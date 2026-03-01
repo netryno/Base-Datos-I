@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="elAjinQbLC4Fq3_vwEnS" name="Page-1">
-        <mxGraphModel dx="1066" dy="1601" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1260" dy="1680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -224,6 +224,113 @@
                 </mxCell>
                 <mxCell id="72" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
                     <mxGeometry x="190" y="-280" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="&lt;h1 style=&quot;margin-top: 0px; margin-bottom: 0px;&quot;&gt;&lt;p style=&quot;margin: 0cm -23.3pt 0.0001pt -21.25pt; line-height: 16.8667px; font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-weight: 400; text-align: justify;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span lang=&quot;es-419&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;4.- Policía Boliviana - Gestión de Infracciones&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm 0px 0px; line-height: 16.8667px; font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-weight: 400; text-align: justify;&quot; class=&quot;MsoNormal&quot;&gt;&lt;span lang=&quot;es-419&quot;&gt;Necesitamos digitalizar el registro de multas de tránsito. Contamos con oficiales de policía, identificados por su número de placa y nombre. También registramos a los conductores, de quienes guardamos su número de licencia y nombre completo. Cuando un oficial detecta una falta, emite una boleta de infracción. Cada oficial maneja su propio talonario numerado, por lo que las boletas se identifican por un &#39;Número de Boleta&#39; que empieza desde el 1 para cada oficial (es decir, puede haber muchas boletas número 1, pero cada una pertenece a un oficial distinto). En la boleta anotamos la fecha y el tipo de infracción cometida. Cada boleta involucra a un solo oficial y a un solo conductor.&lt;/span&gt;&lt;/p&gt;&lt;/h1&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="-180" width="760" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="&lt;b&gt;Tarea&amp;nbsp; - modelo entidad relacion&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="-1160" width="350" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="76" target="83">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="85">
+                    <mxGeometry x="-0.695" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="76" value="CONDUCTOR" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="595" y="110" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="77" target="80">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="81">
+                    <mxGeometry x="-0.5561" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="77" value="OFICIAL" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="105" y="110" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="79" target="83">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="84">
+                    <mxGeometry x="-0.7514" y="3" relative="1" as="geometry">
+                        <mxPoint x="3" y="3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="79" value="BOLETA" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="365" y="230" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" style="edgeStyle=none;html=1;endArrow=none;endFill=0;shape=link;" edge="1" parent="1" source="80" target="79">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="82">
+                    <mxGeometry x="0.7552" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="80" value="EMITE" style="shape=rhombus;double=1;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="115" y="230" width="85" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="INVOLUCRA" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="605" y="230" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" style="edgeStyle=none;html=1;" edge="1" parent="1" source="90" target="79">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;nro boleta&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="290" y="170" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="91" target="77">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="nro placa" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+                    <mxGeometry x="43.75" y="50" width="76.25" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="92" target="77">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="137.5" y="40" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="93" target="76">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="nro licencia" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="50" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" style="edgeStyle=none;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="94" target="76">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="nombre" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="615" y="40" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" style="edgeStyle=none;html=1;" edge="1" parent="1" source="95" target="79">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="fecha" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="160" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" style="edgeStyle=none;html=1;" edge="1" parent="1" source="96" target="79">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="tipo infraccion" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="465" y="180" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="&#xa;Como responsables del Banco Bisa, necesitamos un sistema que refleje fielmente nuestro minimundo. Contamos con varias sucursales, cada una identificada por un código único y un nombre; una sucursal puede tener múltiples direcciones físicas en la ciudad, por lo que la dirección se registra como un dato que puede repetirse para una misma sucursal. En cada sucursal funcionan diversos departamentos, como los de cajas o atención al cliente; cada departamento se identifica por un número que es único dentro de su sucursal, y además tiene un nombre descriptivo.&#xa;De nuestros empleados guardamos el documento de identidad, el sueldo y el nombre completo, detallando el nombre y ambos apellidos. También registramos todos los números de teléfono donde podamos localizarlos, ya que un empleado puede tener más de uno. El sistema debe mostrar automáticamente la antigüedad de cada empleado en la empresa, la cual se calcula a partir de su fecha de ingreso. En nuestra estructura, hay empleados con experiencia que supervisan directamente a otros empleados; un empleado puede supervisar a varios, pero cada empleado tiene a lo mucho un supervisor. Además, cada empleado está asignado a un único departamento.&#xa;Por cuestiones de seguros, llevamos el registro de los familiares que dependen de cada empleado, anotando el nombre del familiar y el parentesco que tiene con el empleado. Si el empleado deja de trabajar con nosotros, la información de estos familiares deja de ser relevante para el sistema.&#xa;A nuestros clientes los identificamos por su documento de identidad y nombre; también guardamos su dirección completa especificando calle, número y zona. El sistema debe mostrar automáticamente el saldo total que un cliente posee, calculado como la suma del saldo de todas sus cuentas. Los clientes abren cuentas bancarias, las cuales tienen un número único y el tipo de moneda en que operan; una cuenta puede tener varios titulares y un mismo cliente puede ser dueño de varias cuentas.&#xa;Dentro de cada cuenta se realizan transacciones de depósito o retiro; estas se numeran de forma secuencial comenzando desde el uno para cada cuenta específica, registrando además la fecha y el monto de cada operación. Finalmente, el banco otorga préstamos, de los cuales se guarda un número de operación único, el monto y el plazo en meses. Cada préstamo es solicitado por un único cliente y debe contar con la aprobación de un único empleado responsable." style="text;overflow=hidden;rounded=0;imageAspect=1;expand=1;editable=1;movable=1;resizable=1;rotatable=1;deletable=1;locked=0;connectable=1;whiteSpace=wrap;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="420" width="765" height="550" as="geometry"/>
+                </mxCell>
+                <mxCell id="109" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 15px;&quot;&gt;&lt;b&gt;5.- Entidad Bancaria &quot;Bisa&quot;&lt;/b&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="400" width="260" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="SUCURSAL" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="1000" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="Attribute" style="ellipse;whiteSpace=wrap;html=1;align=center;fontStyle=4;rounded=0;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=none;gradientColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="1090" width="100" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
