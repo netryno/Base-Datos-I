@@ -1,0 +1,69 @@
+Table lineas{
+  linea_id int [pk, increment]
+  color varchar [unique]
+  fecha_inguracion date
+}
+
+
+Table estaciones{
+  estacion_id int [pk, increment]
+  nombre varchar(40) [unique]
+  direccion varchar(60) [not null]
+}
+
+Table recorre{
+  recorre_id int [pk, increment]
+  fecha date [null]
+  linea_id int [ref: > lineas.linea_id]
+  estacion_id int [ref: > estaciones.estacion_id]
+}
+
+
+Table cabinas {
+  cabina_id int [pk, increment]
+  numero_cabina int [unique]
+  linea_id int [not null, ref: > lineas.linea_id]
+}
+
+Table empleados{
+  empleado_id int [pk, increment]
+  carnet varchar(11) [unique]
+  nombre varchar [default: 'Paul']
+  primer_apellido varchar
+  segundo_apellido varchar
+  sueldo double
+  estacion_id int [not null, ref: > estaciones.estacion_id]
+  supervisor_empleado_id int [null, ref: > empleados.empleado_id]
+}
+
+Table telefonos{
+  telefono_id int [pk,increment]
+  numero varchar
+  pais varchar
+  empleado_id int [ref: > empleados.empleado_id]
+}
+
+
+Table pasajeros {
+  pasajero_id int [pk, increment]
+  carnet varchar(15) [unique]
+  nombre_completo varchar
+  primer_apellido vachar
+  segundo_apellido varchar
+  edad int 
+}
+
+Table bonos{
+  bono_id int [pk, increment]
+  codigo_beneficiario int [unique]
+  tipo_descuento int
+  pasajero_id int [not null, ref: - pasajeros.pasajero_id]
+}
+
+Table transporta{
+  transporta_id int [pk, increment]
+  cabina_id int [not null,ref: > cabinas.cabina_id]
+  pasajero_id int [not null, ref:> pasajeros.pasajero_id]
+  fecha date
+}
+
