@@ -41,3 +41,40 @@ VALUES
 ('Paul Caihuara'),
 ('Paul Caba'),
 ('Pedro domingo')
+
+
+-- conectarse a La consola de psql
+
+#docker conectar, ingresar al docker
+docker exec -it my-database bash
+
+#dentro del docker contectar al motor bd
+psql -U alumno -d course-db
+
+
+#si pide contraseña
+PGPASSWORD=123456 psql -U alumno -d course-db
+
+
+
+#cambiarnos a otra bd
+\c bd_usuarios alumno
+
+# select
+select * from personas
+
+
+-- listar base de datos
+\l
+
+-- listar usuarios
+\du
+
+-- describe tablas de la BD actual
+\dt
+
+-- lista esquemas de la BD actual
+\dn
+
+-- salir
+\q
