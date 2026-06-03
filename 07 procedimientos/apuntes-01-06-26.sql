@@ -1,27 +1,32 @@
---1.- 
+-------*******************************************
+--1.-  **************** FUNCIONES ****************
 -- Crear funcion y llamar:
-
+-- Solo se ejecutar una vez.
 CREATE FUNCTION get_persona(persona_id INT)
 RETURNS TEXT
 LANGUAGE sql
 AS $$
 	SELECT nombre FROM personas WHERE persona_id =$1;
 $$;
+-- Fin crear funcion.
+--Solo ejecutar una vez hasta aqui.
 
--- llamar funcion
+-- Como llamar funcion?, 
+-- al llamar la función, NO es necesario volver a crear la función.
 SELECT get_persona(3);
 
--- para verificar si esta ahi el dao
+
+-- Consulta ayuda para verificar si esta ahi el dato
 SELECT * FROM personas
 
--- otra manera de llamara
+-- Otra manera de llamar a la funcion
 SELECT persona_id, get_persona(persona_id)  FROM personas;
 
---- otra en where
+-- Otra manera de llamar a la funcion en where
 select * FROM personas where nombre = get_persona(1)
 
-
---- 2
+-------************************************************
+---2.- **************** PROCEDIMIENTOS ****************
 -- PROCEDIMENTO HOLA MUNDO
 CREATE OR REPLACE PROCEDURE hello_world()
 LANGUAGE plpgsql
@@ -43,11 +48,16 @@ BEGIN
 END;
 $$;
 
+-- Fin crear procedimiento.
 
---lLMAR PROCEDIMIENTO
+
+-- Como llamar procedimiento?, al llamar el procedimiento, no es necesario volver a crear el procedimiento.
 CALL hello_world();
--- .-3
--- PROCEDIMENTO  sumar y multimplicar
+
+
+-------************************************************************
+-- 3.- **************** PROCEDIMIENTOS, Ejercicios ****************
+-- Sumar y multimplicar
 CREATE OR REPLACE PROCEDURE sumar_multiplicar(a INT, b INT, c INT, d)
 LANGUAGE plpgsql
 AS $$
@@ -63,13 +73,15 @@ BEGIN
 
 END;
 $$;
+-- Fin crear procedimiento.
 
-
---lLMAR PROCEDIMIENTO
+-- LLamar al procedimiento. (al ejecutar esta liena, ya no es necesario volver a crear el procedimiento.)
 CALL sumar_multiplicar(2,5,5);
 
----4.- CALCULADOR EJEMPLO
--- PROCEDIMENTO  sumar y multimplicar
+
+-------************************************************************
+--4.-  **************** PROCEDIMIENTOS, Ejercicios ****************
+-- Calculador completo, suma, resta, multiplicacion, division, y bucle.
 CREATE OR REPLACE PROCEDURE calculador(a INT, b INT )
 LANGUAGE plpgsql
 AS $$
@@ -106,13 +118,16 @@ BEGIN
 	--RAISE NOTICE 'fin';
 END;
 $$;
+-- Fin crear procedimiento.
 
 
---lLMAR PROCEDIMIENTO
+
+--Como llamar al procedimiento. (al ejecutar esta liena, ya no es necesario volver a crear el procedimiento.)
 CALL calculador(2,5);
 
-
--- 5.- REalizar factorialde un numero
+-------************************************************************
+--5.-  **************** PROCEDIMIENTOS, Ejercicios ****************
+-- REalizar factorialde un numero
 CREATE OR REPLACE PROCEDURE calcular_factorial(p_numero INT)
 LANGUAGE plpgsql
 AS $$
@@ -153,7 +168,9 @@ $$;
 ---resultado
 CALL calcular_factorial(50);
 
---6.- Listar procediimentos de mi BD, y eliminar
+-------************************************************************
+-- 6.- **************** PROCEDIMIENTOS, Ejercicios ****************
+-- Listar procedimientos que tengo en mi BD, y eliminar
 SELECT 
     p.proname AS nombre,
     n.nspname AS esquema,
@@ -168,13 +185,13 @@ WHERE p.prokind = 'p'
   AND n.nspname = 'public'      -- Cambia 'public' por tu esquema
 ORDER BY p.proname;
 
---elminar ... si tiene mas parametros es necesario especificar
+--elminar procedimientos ... si tiene mas parametros es necesario especificar
 DROP PROCEDURE IF EXISTS hello_world();
 DROP PROCEDURE IF EXISTS calculadora(INT, INT);
 
-
--- 7.- REgistrar viaje, si es que ya viajo ya no registrar (a dicho pais)
-
+-------************************************************************
+-- 7.- **************** PROCEDIMIENTOS, Ejercicios ****************
+-- REgistrar viaje, si es que ya viajo ya no registrar (a dicho pais)
 CREATE OR REPLACE PROCEDURE registrar_viaje_simple(
     p_persona_id INT,
     p_pais_id INT,
@@ -215,16 +232,62 @@ BEGIN
     
 END;
 $$;
+-- Fin crear procedimiento.
 
+-- consulta para verificar datos
 select * from personas
 select * from viajes where persona_id = 21
 
 
--- Nuevo viaje (Juan nunca fue a Cuba pais_id=21)
+-- Prueba registro viaje
 CALL registrar_viaje_simple(1, 21, '2025-12-25');
 
--- Reincidente (Luis YA fue a Argentina pais_id=1 en 2023 y 2024)
+-- Prueba registro viaje
 CALL registrar_viaje_simple(5, 1, '2025-06-01');
 
 
---8.-  Ejercicios: Si una persona ya habla el idioma, no hacer nada, si es que NO habla ese idioma, registrar.
+
+-------************************************************************
+-- 8.- **************** PROCEDIMIENTOS, Ejercicios ****************
+-- Si una persona ya habla un idioma, no hacer nada, si es que NO habla ese idioma, registrar
+CREATE OR REPLACE PROCEDURE registrar_idioma_simple(
+    p_persona_id INT,
+    p_idioma VARCHAR(30),
+    p_nivel VARCHAR(10)
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_nombre VARCHAR(50);
+    v_existe INT;
+BEGIN
+    -- Nombre de la persona
+    SELECT nombre INTO v_nombre 
+    FROM personas 
+    WHERE persona_id = p_persona_id;
+    
+    -- ¿Ya tiene este idioma?
+    SELECT COUNT(*) INTO v_existe 
+    FROM persona_idiomas 
+    WHERE persona_id = p_persona_id 
+      AND idioma = p_idioma;
+    
+    -- Si ya lo tiene, no hacer nada
+    IF v_existe > 0 THEN
+        RAISE NOTICE ' % ya habla %', v_nombre, p_idioma;
+        RETURN;
+    END IF;
+    
+    -- Registrar idioma nuevo
+    INSERT INTO persona_idiomas (persona_id, idioma, nivel)
+    VALUES (p_persona_id, p_idioma, p_nivel);
+    
+    RAISE NOTICE ' % ahora habla % nivel %', v_nombre, p_idioma, p_nivel;
+    
+END;
+$$;
+
+-- fin crear procedimiento.
+
+-- Llamar al procedimiento.
+CALL registrar_idioma_simple(1, 'Ingles', 'B1');
