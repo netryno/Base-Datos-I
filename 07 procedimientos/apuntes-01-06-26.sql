@@ -293,3 +293,38 @@ $$;
 
 -- Llamar al procedimiento.
 CALL registrar_idioma_simple(1, 'Ingles', 'B1');
+
+
+
+-------************************************************************
+-- 8.1.- **************** PROCEDIMIENTOS, Ejercicios ****************
+-- Versin simplificada del procemiento anterior.
+CREATE OR REPLACE PROCEDURE registrar_idioma_simple_2(
+    p_persona_id INT,
+    p_idioma VARCHAR(30),
+    p_nivel VARCHAR(10)
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_existe INT;
+BEGIN
+    SELECT COUNT(*) INTO v_existe 
+    FROM persona_idiomas 
+    WHERE persona_id = p_persona_id AND idioma = p_idioma;
+    
+    IF v_existe > 0 THEN
+        RAISE NOTICE 'La persona ya habla ese idioma';
+        RETURN;
+    END IF;
+    
+    INSERT INTO persona_idiomas (persona_id, idioma, nivel)
+    VALUES (p_persona_id, p_idioma, p_nivel);
+    
+    RAISE NOTICE 'Idioma registrado';
+END;
+$$;
+-- Fin crear procedimiento.
+
+-- llmar procedimiento.
+CALL registrar_idioma_simple_2(1, 'Ingles', 'B1');
