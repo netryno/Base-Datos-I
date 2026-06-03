@@ -1,3 +1,5 @@
+-- Apuntes del 01-06-2026, Lunes (laboratorio)
+
 -------*******************************************
 --1.-  **************** FUNCIONES ****************
 -- Crear funcion y llamar:
