@@ -1,3 +1,7 @@
+-- Para realizar ejercicios es necesario restaurar bd-personas:
+-- en siguiente repositorio:
+-- https://github.com/netryno/Base-Datos-I/blob/main/05%20Tarea%20sql/personas.sql
+
 
 -------*******************************************
 --1.-  **************** FUNCIONES ****************
