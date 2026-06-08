@@ -108,7 +108,7 @@ class ViajeCreate(BaseModel):
 
 app = FastAPI(
     title="Python + PostgreSQL",
-    description="Ejemplo mínimo para entender la conexión a BD",
+    description="Ejemplo mínimo para comprender la conexión a BD",
     version="1.0"
 )
 
@@ -161,6 +161,36 @@ def crear_persona(persona: PersonaCreate, db=Depends(get_db)):
         raise HTTPException(status_code=400, detail=f"CI {persona.ci} ya existe")
     finally:
         cursor.close()
+
+
+
+
+@app.post("/personas_ps", status_code=201)
+def crear_persona_ps(persona: PersonaCreate, db=Depends(get_db)):
+    cursor = db.cursor()
+    try:
+        # CALL para PROCEDURE
+        cursor.execute(
+            "CALL sp_crear_persona(%s, %s, %s, %s)",
+            (persona.nombre, persona.primer_apellido, persona.segundo_apellido, persona.ci)
+        )
+        db.commit()
+        
+        # Como el SP no retorna nada, hacemos SELECT
+        cursor.execute(
+            "SELECT * FROM personas WHERE ci = %s",
+            (persona.ci,)
+        )
+        return cursor.fetchone()
+        
+    except psycopg2.IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=400, detail=f"CI {persona.ci} ya existe")
+    finally:
+        cursor.close()
+
+
+
 
 
 @app.get("/personas")

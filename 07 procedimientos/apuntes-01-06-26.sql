@@ -328,3 +328,23 @@ $$;
 
 -- llmar procedimiento.
 CALL registrar_idioma_simple_2(1, 'Ingles', 'B1');
+
+
+-------************************************************************
+-- 9.- **************** PROCEDIMIENTOS, para usar en python ****************
+
+CREATE OR REPLACE PROCEDURE sp_crear_persona(
+    p_nombre VARCHAR(50),
+    p_primer_apellido VARCHAR(50),
+    p_segundo_apellido VARCHAR(50),
+    p_ci VARCHAR(20)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO personas (nombre, primer_apellido, segundo_apellido, ci)
+    VALUES (p_nombre, p_primer_apellido, p_segundo_apellido, p_ci);
+END;
+$$;
+
+
