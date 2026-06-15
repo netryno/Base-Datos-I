@@ -132,7 +132,7 @@ def root():
 # CRUD PERSONAS
 # ============================================================================
 
-@app.post("/personas", status_code=201)
+@app.post("/by-paul/personas", status_code=201)
 def crear_persona(persona: PersonaCreate, db=Depends(get_db)):
     """
     CREAR persona.
@@ -165,7 +165,7 @@ def crear_persona(persona: PersonaCreate, db=Depends(get_db)):
 
 
 
-@app.post("/personas_ps", status_code=201)
+@app.post("/by-paul/personas_ps", status_code=201)
 def crear_persona_ps(persona: PersonaCreate, db=Depends(get_db)):
     cursor = db.cursor()
     try:
@@ -193,21 +193,21 @@ def crear_persona_ps(persona: PersonaCreate, db=Depends(get_db)):
 
 
 
-@app.get("/personas")
+@app.get("/by-paul/personas")
 def listar_personas(db=Depends(get_db)):
     """
     LISTAR todas las personas.
     
-    SQL: SELECT * FROM personas
+    SQL: SELECT *  FROM personas
     """
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM personas ORDER BY persona_id")
+    cursor.execute("SELECT *  FROM personas ORDER BY persona_id")
     resultados = cursor.fetchall()
     cursor.close()
     return resultados
 
 
-@app.delete("/personas/{persona_id}")
+@app.delete("/by-paul/personas/{persona_id}")
 def eliminar_persona(persona_id: int, db=Depends(get_db)):
     """
     ELIMINAR persona y TODOS sus viajes automáticamente.
@@ -245,7 +245,7 @@ def eliminar_persona(persona_id: int, db=Depends(get_db)):
 # CRUD VIAJES
 # ============================================================================
 
-@app.post("/viajes", status_code=201)
+@app.post("/by-paul/viajes", status_code=201)
 def crear_viaje(viaje: ViajeCreate, db=Depends(get_db)):
     """
     CREAR viaje.
@@ -283,7 +283,7 @@ def crear_viaje(viaje: ViajeCreate, db=Depends(get_db)):
     return nuevo_viaje
 
 
-@app.get("/viajes")
+@app.get("/by-paul/viajes")
 def listar_viajes(db=Depends(get_db)):
     """
     LISTAR viajes con info de persona y país (JOIN).
