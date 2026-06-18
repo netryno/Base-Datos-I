@@ -146,8 +146,6 @@ def seed_data(
             db.commit()
         
         # Generar personas y sus viajes
-        base_ci = 1000000
-        
         for i in range(n_personas):
             nombre = random.choice(NOMBRES)
             apellido1 = random.choice(APELLIDOS)
